@@ -1,10 +1,22 @@
-import { Component, Show } from "solid-js";
+import { Component, createSignal, Show } from "solid-js";
 import { images } from "../store/AppStore";
+import { Dialog } from "./Dialog";
 import { ImageCard } from "./ImageCard";
 
 export const CardsContainer: Component = () => {
+  const [showModal, setShowModal] = createSignal(false);
+  const [showSelectedImage, setShowSelectedImage] = createSignal("");
+
+  const showPreview = (url: string) => {
+    showModal() ? setShowModal(false) : setShowModal(true);
+    setShowSelectedImage(url);
+  };
+
   return (
     <>
+      <Show when={showModal()}>
+        <Dialog id="12" image={showSelectedImage()} close={()=>setShowModal(false)} />
+      </Show>
       <Show
         when={images().length > 0}
         fallback={
@@ -19,7 +31,7 @@ export const CardsContainer: Component = () => {
             mt-16 pb-14"
         >
           {images().map((image) => (
-            <ImageCard imageInfo={image} />
+            <ImageCard imageInfo={image} showPreview={showPreview} />
           ))}
         </div>
       </Show>
