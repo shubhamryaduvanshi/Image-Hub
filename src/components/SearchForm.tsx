@@ -27,16 +27,21 @@ export const SearchForm: Component = () => {
   };
 
   return (
-    <div class="p-4 mx-auto flex justify-center">
+    <div class="p-4 mx-auto flex justify-center flex-col sm:flex-row items-center">
       <input
         type="text"
         placeholder="Search"
-        class="w-96 p-2 bg-slate-200 rounded-md"
+        class="w-72 p-2 bg-slate-200 rounded-md sm:96"
         value={searchTerm()}
         onInput={(e) => setSearchTerm(e.currentTarget.value)}
       />
       <button
-        class="bg-slate-100 ml-4 py-2 px-3 rounded-md text-md shadow-md"
+        class="bg-slate-100 sm:ml-4 py-2 px-3 rounded-md text-md shadow-md
+        w-36 sm:w-auto
+        mt-4 sm:mt-0
+        mx-auto sm:mx-0
+        hover:bg-slate-200
+        "
         onClick={handleSubmit}
       >
         Search
