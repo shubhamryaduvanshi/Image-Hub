@@ -43,6 +43,7 @@ export const SearchForm: Component = () => {
         hover:bg-slate-200
         "
         onClick={handleSubmit}
+        disabled={searchTerm().length === 0}
       >
         Search
       </button>
