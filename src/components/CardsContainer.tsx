@@ -28,7 +28,9 @@ export const CardsContainer: Component = () => {
         <div
           class="grid grid-cols-1 gap-6 justify-center
           xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 p-4
-            mt-16 pb-14"
+            mt-8 pb-14
+            sm:mt-16
+            "
         >
           {images().map((image) => (
             <ImageCard imageInfo={image} showPreview={showPreview} />
