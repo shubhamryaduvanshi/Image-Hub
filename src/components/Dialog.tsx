@@ -13,7 +13,7 @@ export const Dialog = (props: DialogProps) => {
       }}
     >
       <div class="dialog-wrapper">
-        <div class="flex align-center justify-between py-4">
+        <div class="flex align-center justify-between py-4 ">
           <p class="text-md">Image Preview </p>
           <div
             class="text-slate-600 border border-slate-500 rounded-md px-2 cursor-pointer"
