@@ -7,7 +7,7 @@ export const Footer: Component = () => {
         Made with <span class="text-red-500">❤</span> by Shubham Yadav.
       </div>
       <div>
-        All rights reserved. <span class="text-red-500">©</span> 2022.
+        All rights reserved. <span class="text-red-500">©</span> 2023.
       </div>
     </div>
   );

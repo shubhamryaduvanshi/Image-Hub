@@ -1,9 +1,14 @@
-import { Component, Show, createSignal, onMount } from "solid-js";
+import { Accessor, Component, Show, createSignal, onMount } from "solid-js";
 import { setImages } from "../store/AppStore";
 
-export const SearchForm: Component = () => {
+interface SearchFormProps {
+  isLoading: Accessor<boolean>,
+  setLoading: (e: boolean) => void
+}
+
+export const SearchForm: Component<SearchFormProps> = ({ isLoading, setLoading }) => {
   const [searchTerm, setSearchTerm] = createSignal("");
-  const [isLoading, setIsLoading] = createSignal<boolean>(false);
+  // const [isLoading, setIsLoading] = createSignal<boolean>(false);
 
 
   onMount(() => {
@@ -11,15 +16,15 @@ export const SearchForm: Component = () => {
   });
 
   const getImages = async (type: string) => {
-    setIsLoading(true);
+    setLoading(true);
     try {
       const res = await fetch(`https://commonserver.onrender.com/upsplace/${type}`);
       const data = await res.json();
       setImages(data.results);
-      setIsLoading(false);
+      setLoading(false);
     } catch (err) {
       console.log(err);
-      setIsLoading(false)
+      setLoading(false)
     }
   };
 
@@ -43,7 +48,7 @@ export const SearchForm: Component = () => {
           sm:ml-4  sm:w-auto
           mt-4 sm:mt-0
           mx-auto sm:mx-0
-          transition duration-150 ease-in-out bg-slate-100 rounded-md shadow cursor-not-allowed hover:bg-slate-200"
+          transition duration-150 ease-in-out bg-slate-100 rounded-md shadow  hover:bg-slate-200"
           disabled={searchTerm().length === 0}
           onClick={handleSubmit}
         >
